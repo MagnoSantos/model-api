@@ -7,7 +7,7 @@ using sample.Application.Repositories.Interfaces;
 using sample.Infrastructure;
 using sample.Infrastructure.Services;
 using System;
-using static sample.Application.DTO.Colaborador;
+using static sample.Application.DTO.ColaboradorDTO;
 
 namespace sample.API.Configuration
 {
@@ -53,7 +53,7 @@ namespace sample.API.Configuration
         private static void ConfigurarValidator(IServiceCollection services)
         {
             services
-                .AddTransient<IValidator<Colaborador>, ColaboradorValidator>();
+                .AddTransient<IValidator<ColaboradorDTO>, ColaboradorValidator>();
         }
 
         /// <summary>

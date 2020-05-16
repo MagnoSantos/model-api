@@ -1,15 +1,5 @@
 ﻿namespace sample.API
 {
-    public class Sucesso<Type>
-    {
-        public Type Dados { get; }
-
-        public Sucesso(Type dados)
-        {
-            Dados = dados;
-        }
-    }
-
     public class Falha
     {
         public Erro Error { get; }

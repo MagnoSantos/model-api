@@ -1,9 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using sample.Application.DTO;
+using sample.Domain.Entities;
+using System.Threading.Tasks;
 
 namespace sample.Application.Repositories.Interfaces
 {
     public interface IColaboradorRepository
     {
-        Task<Domain.Entities.Colaborador> AdicionarColaborador(DTO.Colaborador colaborador);
+        Task<Colaborador> AdicionarColaborador(ColaboradorDTO colaborador);
     }
 }

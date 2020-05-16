@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using sample.API.Respostas;
 using sample.Application;
 using sample.Application.DTO;
 using sample.Application.Repositories.Interfaces;
@@ -8,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace sample.API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/colaborador")]
     [Produces(MediaTypeNames.Application.Json)]
+    [ApiController]
     public class ColaboradorController : ControllerBase
     {
         private readonly IColaboradorRepository _colaboradorRepository;
@@ -22,11 +21,19 @@ namespace sample.API.Controllers
             _colaboradorRepository = colaboradorRepository;
         }
 
+        /// <summary>
+        /// Adiciona um novo colaborador via API. 
+        /// </summary>
+        /// <param name="colaborador"></param>
+        /// <returns>Colaborador que foi adicionado</returns>
+        /// <response code="200">Retorna o colaborador que foi adicionado</response>
+        /// <response code="400">O corpo da requisição está incorreto e/ou inválido</response>
+        /// <response code="422">Colaborador não foi retornado após o cadastro</response>
+        [ApiVersion("1.0")]
         [HttpPost]
         [ProducesResponseType(400)]
-        [ProducesResponseType(typeof(Sucesso<ColaboradorResposta>), 200)]
         [ProducesResponseType(typeof(Falha), 422)]
-        public async Task<IActionResult> CadastrarColaborador([FromBody]Colaborador colaborador)
+        public async Task<IActionResult> CadastrarColaborador([FromBody]ColaboradorDTO colaborador)
         {
             if (!ModelState.IsValid)
             {
@@ -40,15 +47,7 @@ namespace sample.API.Controllers
                 return UnprocessableEntity(new Falha(Constantes.Mensagens.ErroProcessamento));
             }
 
-            return Ok(
-                new Sucesso<ColaboradorResposta>(
-                    new ColaboradorResposta 
-                    {
-                        data = colaboradorAdicionado.data,
-                        status = colaboradorAdicionado.status 
-                    }
-                )
-            );
+            return Ok(colaboradorAdicionado);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using sample.Infrastructure.Model;
+﻿using sample.Infrastructure.Responses;
 using System.Threading.Tasks;
 
 namespace sample.Infrastructure.Services

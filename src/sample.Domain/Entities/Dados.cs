@@ -2,8 +2,8 @@
 {
     public class Dados
     {
-        public string name { get; set; }
+        public string Nome { get; set; }
 
-        public string id { get; set; }
+        public string Id { get; set; }
     }
 }

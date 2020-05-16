@@ -1,6 +1,7 @@
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -44,7 +45,7 @@ namespace sample.API
                 });
             }
 
-            //Configura fluent validation para validação dos corpos da requisições com base no DTO. 
+            //Configura fluent validation para validação dos corpos da requisições com base no DTO.
             services
                .AddMvc()
                .AddFluentValidation(

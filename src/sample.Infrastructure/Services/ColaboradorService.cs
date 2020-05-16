@@ -2,7 +2,7 @@
 using Flurl.Http;
 using Microsoft.Extensions.Options;
 using Polly;
-using sample.Infrastructure.Model;
+using sample.Infrastructure.Responses;
 using System.Threading.Tasks;
 
 namespace sample.Infrastructure.Services

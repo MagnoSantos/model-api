@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
-using sample.Domain.Entities;
 
-namespace sample.Infrastructure.Model
+namespace sample.Infrastructure.Responses
 {
     public class AdicionarColaboradorResponse
     {
@@ -9,6 +8,6 @@ namespace sample.Infrastructure.Model
         public string Status { get; set; }
 
         [JsonProperty("data")]
-        public Dados Dados { get; set; }
+        public Data Dados { get; set; }
     }
 }

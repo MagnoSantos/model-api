@@ -2,19 +2,23 @@
 {
     public class Colaborador
     {
-        public string status { get; set; }
+        public string Status { get; set; }
 
-        public Dados data { get; set; }
+        public string Nome { get; set; }
+
+        public string Id { get; set; }
 
         /// <summary>
-        /// Construtor baseado no retorno da requisição
+        /// Construtor com base no retorno da requisição realizada
         /// </summary>
-        /// <param name="Status"></param>
-        /// <param name="Data"></param>
-        public Colaborador(string Status, Dados Data)
+        /// <param name="status"></param>
+        /// <param name="nome"></param>
+        /// <param name="id"></param>
+        public Colaborador(string status, string nome, string id)
         {
-            status = Status;
-            data = Data;
+            Status = status;
+            Nome = nome;
+            Id = id;
         }
     }
 }
