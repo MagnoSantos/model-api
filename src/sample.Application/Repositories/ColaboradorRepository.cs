@@ -32,8 +32,8 @@ namespace sample.Application.Repositories
 
             return new Colaborador(
                 status: resposta.Status,
-                nome : resposta.Dados?.Nome,
-                id : resposta.Dados?.Id
+                nome: resposta.Dados?.Nome,
+                id: resposta.Dados?.Id
             );
         }
     }

@@ -22,14 +22,13 @@ namespace sample.API.Controllers
         }
 
         /// <summary>
-        /// Adiciona um novo colaborador via API. 
+        /// Adiciona um novo colaborador via API.
         /// </summary>
         /// <param name="colaborador"></param>
         /// <returns>Colaborador que foi adicionado</returns>
         /// <response code="200">Retorna o colaborador que foi adicionado</response>
         /// <response code="400">O corpo da requisição está incorreto e/ou inválido</response>
         /// <response code="422">Colaborador não foi retornado após o cadastro</response>
-        [ApiVersion("1.0")]
         [HttpPost]
         [ProducesResponseType(400)]
         [ProducesResponseType(typeof(Falha), 422)]

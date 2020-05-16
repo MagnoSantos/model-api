@@ -9,20 +9,13 @@ namespace sample.UnitTests.Application
     [TestFixture]
     public class TestesColaboradorValidator
     {
+        private readonly Fixture _fixture = new Fixture();
         private ColaboradorValidator _colaboradorValidator;
 
-        private Fixture _fixture;
-
         [SetUp]
-        public void ConfiguraDependencias()
+        public void SetupMocks()
         {
             _colaboradorValidator = new ColaboradorValidator();
-        }
-
-        [OneTimeSetUp]
-        public void ConfiguraFixture()
-        {
-            _fixture = new Fixture();
         }
 
         [Test]

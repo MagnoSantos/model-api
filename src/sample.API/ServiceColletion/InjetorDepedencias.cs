@@ -6,7 +6,6 @@ using sample.Application.Repositories;
 using sample.Application.Repositories.Interfaces;
 using sample.Infrastructure;
 using sample.Infrastructure.Services;
-using System;
 using static sample.Application.DTO.ColaboradorDTO;
 
 namespace sample.API.Configuration
