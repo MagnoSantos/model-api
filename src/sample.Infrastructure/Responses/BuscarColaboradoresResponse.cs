@@ -1,13 +1,14 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace sample.Infrastructure.Responses
 {
-    public class AdicionarColaboradorResponse
+    public class BuscarColaboradoresResponse
     {
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("data")]
-        public Dados Dados { get; set; }
+        public IEnumerable<dynamic> Dados { get; set; }
     }
 }
