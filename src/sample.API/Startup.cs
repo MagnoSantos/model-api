@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using sample.API.Configuration;
+using sample.API.HealthChecks;
 using System.Diagnostics.CodeAnalysis;
 
 namespace sample.API
@@ -52,6 +53,11 @@ namespace sample.API
                .AddFluentValidation(
                    fvc => fvc.RegisterValidatorsFromAssemblyContaining<Startup>()
             );
+
+            //Configura o health check para a aplicação
+            services
+                .AddHealthChecks()
+                .AddCheck<DummyAPIHealthCheck>("Dummy API");
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -75,6 +81,8 @@ namespace sample.API
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseHealthChecks("/health");
 
             app.UseEndpoints(endpoints =>
             {

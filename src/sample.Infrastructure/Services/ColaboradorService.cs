@@ -47,5 +47,22 @@ namespace sample.Infrastructure.Services
                     .ReceiveJson<AdicionarColaboradorResponse>()
             );
         }
+
+        /// <summary>
+        /// Método exposto para realização do check health da API
+        /// </summary>
+        /// <returns></returns>
+        public async Task<BuscarColaboradoresResponse> BuscarTodosOsColaboradores()
+        {
+            return await Policy
+                .Handle<FlurlHttpException>()
+                .RetryAsync()
+                .ExecuteAsync(() =>
+                    _config.UrlDummy
+                    .AppendPathSegment("employees")
+                    .GetAsync()
+                    .ReceiveJson<BuscarColaboradoresResponse>()
+            );
+        }
     }
 }

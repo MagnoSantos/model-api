@@ -2,7 +2,7 @@
 
 namespace sample.Infrastructure.Responses
 {
-    public class Data
+    public class Dados
     {
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Nome { get; set; }
