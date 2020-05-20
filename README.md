@@ -212,3 +212,67 @@ O resultado é processado e os casos de assert vem logo abaixo com o resultado e
      );
  }
 ```
+
++ **Health Check**: Responsável por retornar uma verificação de integridade do status operacional do seu microsserviço.
+
+Inicialmente configure uma classe com a integração que deseja consultar o status de _health check_, nesse caso, como fazemos integração apenas com a API do Dummy foi a integração escolhida. 
+
+```csharp
+//Define a classe de health check
+public class DummyAPIHealthCheck: IHealthCheck {
+    private readonly IColaboradorService _colaboradorService;
+
+    public DummyAPIHealthCheck(
+        IColaboradorService colaboradorService
+    )
+    {
+        _colaboradorService = colaboradorService;
+    }
+
+    public Task<HealthCheckResult> CheckHealthAsync(
+        HealthCheckContext context,
+        CancellationToken cancellationToken =
+        default
+    ) 
+    {
+        try {
+            var colaboradores = _colaboradorService.BuscarTodosOsColaboradores();
+            
+            //Retorna o resultado de status da API com base na obtenção dos colaboradores
+            if (colaboradores == null) {
+                return Task.FromResult(
+                    HealthCheckResult.Unhealthy(
+                        description: "API Dummy não retornou os colaboradores"
+                    )
+                );
+            }
+
+            return Task.FromResult(HealthCheckResult.Healthy());
+            
+        } catch (Exception ex) {
+            return Task.FromResult(
+                HealthCheckResult.Unhealthy(
+                    description: "Falha ao obter todos os colaboradores",
+                    exception: ex
+                )
+            );
+        }
+    }
+}
+```
+
+Para finalizar essa etapa, é necessário preencher no Startup da aplicação o check específico e a rota para obtenção das informações de _health check_.
+
+```csharp
+//Configure services
+//Configura o health check para a aplicação
+services
+    .AddHealthChecks()
+    .AddCheck < DummyAPIHealthCheck > ("Dummy API");
+```
+
+```csharp
+//Configure
+//Defina a rota de health
+app.UseHealthChecks("/health");
+```
