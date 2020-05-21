@@ -268,7 +268,7 @@ Para finalizar essa etapa, é necessário preencher no Startup da aplicação o 
 //Configura o health check para a aplicação
 services
     .AddHealthChecks()
-    .AddCheck < DummyAPIHealthCheck > ("Dummy API");
+    .AddCheck<DummyAPIHealthCheck>("Dummy API");
 ```
 
 ```csharp
