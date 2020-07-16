@@ -33,6 +33,8 @@ namespace sample.API
             //Configurações da aplicação
             services.AdicionarConfiguracoesAplicacao(Configuration);
 
+            services.AddMemoryCache();
+
             //Configura Swagger
             if (!Environment.IsProduction())
             {

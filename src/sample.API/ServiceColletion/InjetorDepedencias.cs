@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using sample.Application.Cache;
 using sample.Application.DTO;
 using sample.Application.Repositories;
 using sample.Application.Repositories.Interfaces;
@@ -27,6 +28,7 @@ namespace sample.API.Configuration
                 .Configure<ConfiguracoesAplicacao>(o =>
                 {
                     o.UrlDummy = configuration.GetValue<string>("AppConfiguration:UrlDummy");
+                    o.UrlApiLocalidades = configuration.GetValue<string>("AppConfiguration:UrlApiLocalidades");
                 }
             );
         }
@@ -72,7 +74,9 @@ namespace sample.API.Configuration
         private static void ConfigurarServices(IServiceCollection services)
         {
             services
-                .AddTransient<IColaboradorService, ColaboradorService>();
+                .AddTransient<IColaboradorService, ColaboradorService>()
+                .Decorate<ICidadeService, CidadeCachingService>()
+                .AddTransient<ICidadeService, CidadeService>();
         }
     }
 }
