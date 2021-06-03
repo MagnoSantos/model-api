@@ -1,6 +1,6 @@
 ## Informações gerais sobre projeto
 
-Aplicação contendo arquitetura modelo para projetos de API's construídas com .DotNet. 
+Aplicação contendo arquitetura modelo para projetos de API's construídas com .Net. 
 
 **Tecnologias e Bibiotecas:**
 
