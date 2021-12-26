@@ -14,8 +14,6 @@ Aplicação contendo arquitetura modelo para projetos de API's construídas com 
 + [FluentValidation - JSON]
 + [Flurl - External Services]
 
-## Visão Arquitetural
-
 ## Configurações Específicas:
 
 Esse tópico contempla configurações específicas do projeto.
