@@ -24,6 +24,13 @@ namespace sample.API.Configuration
             IConfiguration configuration
         )
         {
+            //Incluir base em memoria:
+            //services.AddDbContext<DataContext>(options =>
+            //{
+            //    options.UseInMemoryDatabase(Guid.NewGuid().ToString())
+            //           .EnableSensitiveDataLogging();
+            //});
+
             return services
                 .Configure<ConfiguracoesAplicacao>(o =>
                 {
@@ -75,7 +82,6 @@ namespace sample.API.Configuration
         {
             services
                 .AddTransient<IColaboradorService, ColaboradorService>()
-                .Decorate<ICidadeService, CidadeCachingService>()
                 .AddTransient<ICidadeService, CidadeService>();
         }
     }

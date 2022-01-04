@@ -88,7 +88,7 @@ Após configuradas as regras de validação, acesse a sua classe _Statup_ e acre
 services
     .AddMvc()
     .AddFluentValidation(
-        fvc => fvc.RegisterValidatorsFromAssemblyContaining < Startup > ()
+        fvc => fvc.RegisterValidatorsFromAssemblyContaining<Startup>()
     );
 ```
 
@@ -114,9 +114,8 @@ public static IServiceCollection AdicionarConfiguracoesAplicacao(
     this IServiceCollection services,
     IConfiguration configuration
 ) {
-    return services
-        .Configure<ConfiguracoesAplicacao>(o => {
-            o.UrlDummy = configuration.GetValue < string > ("AppConfiguration:UrlDummy");
+    return services.Configure<ConfiguracoesAplicacao>(o => {
+        o.UrlDummy = configuration.GetValue<string>("AppConfiguration:UrlDummy");
     });
 }
 
@@ -205,9 +204,7 @@ O resultado é processado e os casos de assert vem logo abaixo com o resultado e
 
 //Instanciação do controller
  private ColaboradorController Instanciar() {
-     return new ColaboradorController(
-         _colaboradorRepository.Object
-     );
+     return new ColaboradorController(_colaboradorRepository.Object);
  }
 ```
 
@@ -229,8 +226,7 @@ public class DummyAPIHealthCheck: IHealthCheck {
 
     public Task<HealthCheckResult> CheckHealthAsync(
         HealthCheckContext context,
-        CancellationToken cancellationToken =
-        default
+        CancellationToken cancellationToken = default
     ) 
     {
         try {

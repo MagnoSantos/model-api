@@ -1,8 +1,5 @@
 ﻿using sample.Application.DTO;
 using sample.Application.Repositories.Interfaces;
-using sample.Domain.Entities;
-using sample.Infrastructure.Services;
-using System.Threading.Tasks;
 
 namespace sample.Application.Repositories
 {
